@@ -84,7 +84,7 @@ One can change the configurations and use methods like early-stopping to mitigat
 |Transformer|sentiment140|![](results/Transformer-sentiment140-2023-02-24-09-53-58-results/Transformer-sentiment140-2023-02-24-09-53-58-accuracy.svg)|![](results/Transformer-sentiment140-2023-02-24-09-53-58-results/Transformer-sentiment140-2023-02-24-09-53-58-loss.svg)|
 
 #### Notes
-- [analyze_ds.py](helpers/config.py) can be used to find a rough [MAX_SEQUENCE_LENGTH](helpers/config.py?plain=1#L13) for IMDb dataset
+- [analyze_ds.py](helpers/analyze_ds.py) can be used to find a rough [MAX_SEQUENCE_LENGTH](helpers/config.py?plain=1#L13) for IMDb dataset
 (Need to set [BATCH_SIZE](helpers/config.py?plain=1#L7) as 1).
 **MAX_SEQUENCE_LENGTH** is required for the [positional embedding](helpers/models.py?plain=1#L89-L152) of the transformer model.
 - If you want to limit or pad the sequences to [SEQUENCE_LENGTH](helpers/config.py?plain=1#L14), set, 
