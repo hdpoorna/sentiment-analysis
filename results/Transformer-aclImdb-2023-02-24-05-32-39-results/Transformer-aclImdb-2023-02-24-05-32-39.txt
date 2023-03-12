@@ -1,0 +1,92 @@
+
+MODEL_ID: Transformer-2023-02-24-05-32-39
+
+-----------------------------------------------------------------
+
+MODEL_SUMMARY
+Model: "Transformer"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ text_vectorization (TextVec  (None, None)             0         
+ torization)                                                     
+                                                                 
+ token_and_position_embeddin  (None, None, 32)         3272000   
+ g (TokenAndPositionEmbeddin                                     
+ g)                                                              
+                                                                 
+ transformer_block (Transfor  (None, None, 32)         10656     
+ merBlock)                                                       
+                                                                 
+ global_average_pooling1d (G  (None, 32)               0         
+ lobalAveragePooling1D)                                          
+                                                                 
+ dropout_2 (Dropout)         (None, 32)                0         
+                                                                 
+ dense_2 (Dense)             (None, 32)                1056      
+                                                                 
+ dropout_3 (Dropout)         (None, 32)                0         
+                                                                 
+ dense_3 (Dense)             (None, 1)                 33        
+                                                                 
+=================================================================
+Total params: 3,283,745
+Trainable params: 3,283,745
+Non-trainable params: 0
+_________________________________________________________________
+CONFIG
+# constants
+BATCH_SIZE = 32
+VAL_SPLIT = 0.2
+DATA_SUBSET = "both"  # None if VAL_SPLIT is None, else "training" or "both"
+SEED = 42
+
+MAX_FEATURES = 100000
+MAX_SEQUENCE_LENGTH = 2500
+SEQUENCE_LENGTH = None  # 250 or 2500 to limit and pad; None for unlimited
+
+EMBEDDING_DIM = 32  # 16 or 32 or 64
+
+NUM_ATTN_HEADS = 2
+FEED_FWD_DIM = EMBEDDING_DIM
+
+MASK_ZERO = True   # True if SEQUENCE_LENGTH = None
+
+EPOCHS = 10
+LEARNING_RATE = 1e-3
+
+AVG_MODEL_DROPOUTS = [{"apply": True, "rate": 0.2},
+                      {"apply": True, "rate": 0.2},
+                      {"apply": True, "rate": 0.5}]  # 3 dropouts
+
+RNN_MODEL_DROPOUTS = [{"apply": True, "rate": 0.2},
+                      {"apply": True, "rate": 0.2},
+                      {"apply": True, "rate": 0.5}]  # 3 dropouts
+
+TRANSFORMER_MODEL_DROPOUTS = [{"apply": True, "rate": 0.2},
+                              {"apply": True, "rate": 0.1},
+                              {"apply": True, "rate": 0.1}]  # 3 dropouts
+
+MODEL_DROPOUTS = [{"apply": False, "rate": None},
+                  {"apply": True, "rate": 0.2},
+                  {"apply": True, "rate": 0.2}]  # 3 dropouts
+
+
+
+-----------------------------------------------------------------
+
+HISTORY
+loss: [0.3902648985385895, 0.14746183156967163, 0.0886666476726532, 0.07444871962070465, 0.051064856350421906, 0.03265384957194328, 0.028100155293941498, 0.012452034279704094, 0.00976618006825447, 0.005359536502510309]
+binary_accuracy: [0.8166499733924866, 0.948199987411499, 0.9700000286102295, 0.9745500087738037, 0.9817000031471252, 0.9894499778747559, 0.9914000034332275, 0.9968000054359436, 0.9976000189781189, 0.9986500144004822]
+val_loss: [0.2760899066925049, 0.4050123691558838, 0.3980109989643097, 0.37479549646377563, 0.5767738819122314, 0.6266447305679321, 0.6554437279701233, 0.830230176448822, 0.7843195796012878, 0.8017887473106384]
+val_binary_accuracy: [0.8862000107765198, 0.8682000041007996, 0.8795999884605408, 0.8862000107765198, 0.8745999932289124, 0.8884000182151794, 0.8773999810218811, 0.8736000061035156, 0.8790000081062317, 0.8730000257492065]
+
+-----------------------------------------------------------------
+
+EVALUATIONS
+
+Test Accuracy :0.8474400043487549
+
+Test Loss :0.9932395815849304
+
+-----------------------------------------------------------------

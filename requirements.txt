@@ -1,0 +1,5 @@
+# the following packages were used with Python 3.8
+# feel free to explore with different versions
+tensorflow==2.11.0
+matplotlib==3.5.3
+pandas==1.3.5

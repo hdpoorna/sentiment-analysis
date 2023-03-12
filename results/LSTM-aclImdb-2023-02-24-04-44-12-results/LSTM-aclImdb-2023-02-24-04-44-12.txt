@@ -1,0 +1,87 @@
+
+MODEL_ID: LSTM-2023-02-24-04-44-12
+
+-----------------------------------------------------------------
+
+MODEL_SUMMARY
+Model: "LSTM"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ text_vectorization (TextVec  (None, None)             0         
+ torization)                                                     
+                                                                 
+ embedding (Embedding)       (None, None, 32)          3191968   
+                                                                 
+ bidirectional (Bidirectiona  (None, 64)               16640     
+ l)                                                              
+                                                                 
+ dropout (Dropout)           (None, 64)                0         
+                                                                 
+ dense (Dense)               (None, 32)                2080      
+                                                                 
+ dropout_1 (Dropout)         (None, 32)                0         
+                                                                 
+ dense_1 (Dense)             (None, 1)                 33        
+                                                                 
+=================================================================
+Total params: 3,210,721
+Trainable params: 3,210,721
+Non-trainable params: 0
+_________________________________________________________________
+CONFIG
+# constants
+BATCH_SIZE = 32
+VAL_SPLIT = 0.2
+DATA_SUBSET = "both"  # None if VAL_SPLIT is None, else "training" or "both"
+SEED = 42
+
+MAX_FEATURES = 100000
+MAX_SEQUENCE_LENGTH = 2500
+SEQUENCE_LENGTH = None  # 250 or 2500 to limit and pad; None for unlimited
+
+EMBEDDING_DIM = 32  # 16 or 32 or 64
+
+NUM_ATTN_HEADS = 2
+FEED_FWD_DIM = EMBEDDING_DIM
+
+MASK_ZERO = True   # True if SEQUENCE_LENGTH = None
+
+EPOCHS = 10
+LEARNING_RATE = 1e-3
+
+AVG_MODEL_DROPOUTS = [{"apply": True, "rate": 0.2},
+                      {"apply": True, "rate": 0.2},
+                      {"apply": True, "rate": 0.5}]  # 3 dropouts
+
+RNN_MODEL_DROPOUTS = [{"apply": True, "rate": 0.2},
+                      {"apply": True, "rate": 0.2},
+                      {"apply": True, "rate": 0.5}]  # 3 dropouts
+
+TRANSFORMER_MODEL_DROPOUTS = [{"apply": True, "rate": 0.2},
+                              {"apply": True, "rate": 0.1},
+                              {"apply": True, "rate": 0.1}]  # 3 dropouts
+
+MODEL_DROPOUTS = [{"apply": False, "rate": None},
+                  {"apply": True, "rate": 0.2},
+                  {"apply": True, "rate": 0.2}]  # 3 dropouts
+
+
+
+-----------------------------------------------------------------
+
+HISTORY
+loss: [0.4097723662853241, 0.16013123095035553, 0.07483568042516708, 0.040740370750427246, 0.041688740253448486, 0.024595553055405617, 0.011872818693518639, 0.008602574467658997, 0.012446722015738487, 0.00748442392796278]
+binary_accuracy: [0.8073999881744385, 0.9439499974250793, 0.9759500026702881, 0.98785001039505, 0.9857500195503235, 0.9918500185012817, 0.996150016784668, 0.996749997138977, 0.9957500100135803, 0.9976999759674072]
+val_loss: [0.28862470388412476, 0.3629422187805176, 0.4147655665874481, 0.5198771953582764, 0.6728535890579224, 0.4828229546546936, 0.7227296233177185, 0.7441460490226746, 0.6289380192756653, 0.6956725716590881]
+val_binary_accuracy: [0.8858000040054321, 0.8745999932289124, 0.8804000020027161, 0.8718000054359436, 0.8378000259399414, 0.8568000197410583, 0.8694000244140625, 0.870199978351593, 0.866599977016449, 0.8633999824523926]
+
+-----------------------------------------------------------------
+
+EVALUATIONS
+
+Test Accuracy :0.8267999887466431
+
+Test Loss :0.9074060916900635
+
+-----------------------------------------------------------------

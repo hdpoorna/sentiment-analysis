@@ -1,0 +1,87 @@
+
+MODEL_ID: Average-2023-02-24-04-10-16
+
+-----------------------------------------------------------------
+
+MODEL_SUMMARY
+Model: "Average"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ text_vectorization (TextVec  (None, None)             0         
+ torization)                                                     
+                                                                 
+ embedding (Embedding)       (None, None, 32)          3191968   
+                                                                 
+ global_average_pooling1d (G  (None, 32)               0         
+ lobalAveragePooling1D)                                          
+                                                                 
+ dropout (Dropout)           (None, 32)                0         
+                                                                 
+ dense (Dense)               (None, 32)                1056      
+                                                                 
+ dropout_1 (Dropout)         (None, 32)                0         
+                                                                 
+ dense_1 (Dense)             (None, 1)                 33        
+                                                                 
+=================================================================
+Total params: 3,193,057
+Trainable params: 3,193,057
+Non-trainable params: 0
+_________________________________________________________________
+CONFIG
+# constants
+BATCH_SIZE = 32
+VAL_SPLIT = 0.2
+DATA_SUBSET = "both"  # None if VAL_SPLIT is None, else "training" or "both"
+SEED = 42
+
+MAX_FEATURES = 100000
+MAX_SEQUENCE_LENGTH = 2500
+SEQUENCE_LENGTH = None  # 250 or 2500 to limit and pad; None for unlimited
+
+EMBEDDING_DIM = 32  # 16 or 32 or 64
+
+NUM_ATTN_HEADS = 2
+FEED_FWD_DIM = EMBEDDING_DIM
+
+MASK_ZERO = True   # True if SEQUENCE_LENGTH = None
+
+EPOCHS = 10
+LEARNING_RATE = 1e-3
+
+AVG_MODEL_DROPOUTS = [{"apply": True, "rate": 0.2},
+                      {"apply": True, "rate": 0.2},
+                      {"apply": True, "rate": 0.5}]  # 3 dropouts
+
+RNN_MODEL_DROPOUTS = [{"apply": True, "rate": 0.2},
+                      {"apply": True, "rate": 0.2},
+                      {"apply": True, "rate": 0.5}]  # 3 dropouts
+
+TRANSFORMER_MODEL_DROPOUTS = [{"apply": True, "rate": 0.2},
+                              {"apply": True, "rate": 0.1},
+                              {"apply": True, "rate": 0.1}]  # 3 dropouts
+
+MODEL_DROPOUTS = [{"apply": False, "rate": None},
+                  {"apply": True, "rate": 0.2},
+                  {"apply": True, "rate": 0.2}]  # 3 dropouts
+
+
+
+-----------------------------------------------------------------
+
+HISTORY
+loss: [0.45421192049980164, 0.20050708949565887, 0.11388376355171204, 0.061854809522628784, 0.0321652889251709, 0.015687374398112297, 0.006573936436325312, 0.003129230812191963, 0.0014477346558123827, 0.0007212783675640821]
+binary_accuracy: [0.8109999895095825, 0.9261999726295471, 0.9642999768257141, 0.984250009059906, 0.9937999844551086, 0.9975000023841858, 0.9994500279426575, 0.9998999834060669, 0.9999499917030334, 1.0]
+val_loss: [0.277516633272171, 0.2556621730327606, 0.27562007308006287, 0.3128957450389862, 0.34884217381477356, 0.39298301935195923, 0.4418250024318695, 0.48764070868492126, 0.5273400545120239, 0.5595785975456238]
+val_binary_accuracy: [0.8912000060081482, 0.894599974155426, 0.8930000066757202, 0.8903999924659729, 0.8884000182151794, 0.8853999972343445, 0.8823999762535095, 0.8817999958992004, 0.8794000148773193, 0.8791999816894531]
+
+-----------------------------------------------------------------
+
+EVALUATIONS
+
+Test Accuracy :0.8613200187683105
+
+Test Loss :0.6925233602523804
+
+-----------------------------------------------------------------

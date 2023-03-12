@@ -1,0 +1,24 @@
+
+# pycharm
+.idea/
+
+# cache
+**/__pycache__/
+
+# datasets
+data/aclImdb/
+
+# saved models
+saved_models/*/
+
+# old results
+results/old/
+
+# archived
+*.rar
+*.zip
+
+# docs
+*.docx
+*.pdf
+*.csv
