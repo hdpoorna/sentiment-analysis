@@ -86,7 +86,7 @@ One can change the configurations and use methods like early-stopping to mitigat
 #### Notes
 - [analyze_ds.py](helpers/config.py) can be used to find a rough [MAX_SEQUENCE_LENGTH](helpers/config.py?plain=1#L13) for IMDb dataset
 (Need to set [BATCH_SIZE](helpers/config.py?plain=1#L7) as 1).
-**MAX_SEQUENCE_LENGTH** is required for the [positional embedding](helpers/config.py?plain=1#L89-L152) of the transformer model.
+**MAX_SEQUENCE_LENGTH** is required for the [positional embedding](helpers/models.py?plain=1#L89-L152) of the transformer model.
 - If you want to limit or pad the sequences to [SEQUENCE_LENGTH](helpers/config.py?plain=1#L14), set, 
     - **SEQUENCE_LENGTH** to a value less than or equal to **MAX_SEQUENCE_LENGTH**
     - [MASK_ZERO](helpers/config.py?plain=1#L22) to `False`.
@@ -130,7 +130,7 @@ To check whether a model supports **MASK_ZERO**,
     - Use [dataset_140.py](helpers/dataset_140.py) in [train.py](train.py?plain=1#L13)
 - To train different models, pick one in [train.py](train.py?plain=1#L18-L20) and make the changes as you wish.
 - If you want to use the positional embedding logic used in [this](https://www.tensorflow.org/text/tutorials/transformer#the_embedding_and_positional_encoding_layer), 
-change the [transformer](helpers/config.py?plain=1#L183) to use the class `PositionalEmbedding` instead of `TokenAndPositionEmbedding`.
+change the [transformer](helpers/models.py?plain=1#L183) to use the class `PositionalEmbedding` instead of `TokenAndPositionEmbedding`.
 
 #### References
 - [tf basic text classification](https://www.tensorflow.org/tutorials/keras/text_classification)
