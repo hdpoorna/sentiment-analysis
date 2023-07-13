@@ -137,3 +137,4 @@ change the [transformer](helpers/models.py?plain=1#L183) to use the class `Posit
 - [tf text classification with RNNs](https://www.tensorflow.org/text/tutorials/text_classification_rnn)
 - [tf translate text with transformers](https://www.tensorflow.org/text/tutorials/transformer)
 - [keras text classification with a transformer](https://keras.io/examples/nlp/text_classification_with_transformer/)
+- [tf text classification with BERT](https://www.tensorflow.org/text/tutorials/classify_text_with_bert)
