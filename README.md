@@ -32,7 +32,7 @@ _(Assuming the requirements are fulfilled)_
 ```
 python train.py
 ```
-The above commands will do the follwing.
+The above commands will do the following.
 - Download IMDb reviews dataset
 - Start training the Average Pooling model with the [default configurations](helpers/config.py)
 - Save the **accuracy** and **loss** graphs as `svg` images to `results/{MODEL_ID}-results/{MODEL_ID}-{GRAPH_TYPE}.svg`
